@@ -12,6 +12,8 @@ import com.ravindra.request.EmployeeData;
 
 @Repository
 public interface EmployeeRepo extends CrudRepository<EmployeeData, Long>{
+	//add {h-schema} if you want to configure the query for different database schemas
+	//select new EMP_DATA_TB(emp.empId, emp.empName, emp.salary) from {h-schema}EMP_DATA_TB emp where emp.empId= :empId
 	@Query("select new EMP_DATA_TB(emp.empId, emp.empName, emp.salary) from EMP_DATA_TB emp where emp.empId= :empId")
 	EmployeeData findByEmpId(@Param("empId")String empId);
 	
